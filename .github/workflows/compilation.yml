@@ -28,7 +28,7 @@ jobs:
         sudo apt-get -y install texinfo bison flex gettext libgmp3-dev libmpfr-dev libmpc-dev
 
     - name: Install on Mac
-      if: matrix.os[0] == 'macos'
+      if: startsWith( matrix.os[0], 'macos' )
       run: |
         brew update
     
