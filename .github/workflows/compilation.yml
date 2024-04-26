@@ -46,7 +46,7 @@ jobs:
     - name: Runs all stages
       run: |
         export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
-        export CPATH := $(brew --prefix)/include # This may break Ubuntu
+        export CPATH="$(brew --prefix)/include" # This may break Ubuntu
         export LIBRARY_PATH := $(brew --prefix)/lib #This may break Ubuntu
         export PSPDEV=$PWD/pspdev
         export PATH=$PATH:$PSPDEV/bin

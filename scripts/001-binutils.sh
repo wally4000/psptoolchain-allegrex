@@ -33,11 +33,8 @@ fi
 cd "$REPO_FOLDER"
 
 TARGET="psp"
-if [[ $(uname) == "Darwin" ]]; then
-TARG_XTRA_OPTS="--with-sysroot=$(xcrun --sdk macosx --show-sdk-path)"
-else
 TARG_XTRA_OPTS=""
-fi
+
 ## Determine the maximum number of processes that Make can work with.
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
