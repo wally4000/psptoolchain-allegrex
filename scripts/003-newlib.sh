@@ -2,7 +2,7 @@
 # 003-newlib.sh by pspdev developers
 if [[ $(uname) == "Darwin" ]]; then
 export CPATH="$(brew --prefix)/include" # This may break Ubuntu
-export LIBRARY_PATH := $(brew --prefix)/lib #This may break Ubuntu
+export LIBRARY_PATH="$(brew --prefix)/lib" #This may break Ubuntu
 fi
 
 ## Exit with code 1 when any command executed returns a non-zero exit code.

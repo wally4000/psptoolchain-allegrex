@@ -5,6 +5,10 @@ if [[ $(uname) == "Darwin" ]]; then
 export CPATH="$(brew --prefix)/include" # This may break Ubuntu
 export LIBRARY_PATH="$(brew --prefix)/lib" #This may break Ubuntu
 TARG_XTRA_OPTS="--with-native-system-header=$(brew --prefix)/include"
+    sdkroot = $(shell xcrun --sdk macosx --show-sdk-path)
+    macos_extra_args = -isysroot $(sdkroot)
+    CC += -Wno-nullability-completeness -Wno-missing-braces $(macos_extra_args)
+    CXX += -stdlib=libc++ -mmacosx-version-min=10.7 $(macos_extra_args)
 fi
 
 

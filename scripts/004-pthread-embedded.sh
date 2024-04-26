@@ -3,7 +3,7 @@
 
 if [[ $(uname) == "Darwin" ]]; then
 export CPATH="$(brew --prefix)/include" # This may break Ubuntu
-export LIBRARY_PATH := $(brew --prefix)/lib #This may break Ubuntu
+export LIBRARY_PATH="$(brew --prefix)/lib" #This may break Ubuntu
 fi
 
 
