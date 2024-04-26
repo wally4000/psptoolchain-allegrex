@@ -10,6 +10,7 @@ header_paths=(
     "/usr/include/i386-linux-gnu" \
     "/usr/local/include/i386-linux-gnu" \
     "/mingw32/include/"
+    "/opt/homebrew/include"
     # -- Add more locations here --
 )
 

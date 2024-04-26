@@ -25,13 +25,13 @@ if [ $# -eq 1 ]; then
 	esac
 fi
 
-if ! [ -e "/usr/local/bin/brew" -o -e "/opt/local/bin/port" ]; then
+if ! [ -e "$(brew --prefix)" -o -e "/opt/local/bin/port" ]; then
 	echo "Go install Homebrew from http://brew.sh/ or MacPorts from http://www.macports.org/ first, then we can talk!"
 	exit 1
 fi
 
 # sanity checks
-if [ $try_brew -eq 1 -a ! -e "/usr/local/bin/brew" ]; then
+if [ $try_brew -eq 1 -a ! -e "$(brew --prefix)" ]; then
 	echo "Not trying Homebrew, because it is not installed."
 	try_brew=0
 fi

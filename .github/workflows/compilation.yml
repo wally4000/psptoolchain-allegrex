@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os[0] }}
     strategy:
       matrix:
-        os: [[macos-latest, bash], [ubuntu-latest, bash], [windows-latest, msys2]]
+        os: [[macos-13, bash] [macos-latest, bash], [ubuntu-latest, bash], [windows-latest, msys2]]
       fail-fast: false
     defaults:
      run:
@@ -28,7 +28,7 @@ jobs:
         sudo apt-get -y install texinfo bison flex gettext libgmp3-dev libmpfr-dev libmpc-dev
 
     - name: Install on Mac
-      if: matrix.os[0] == 'macos-latest'
+      if: matrix.os[0] == 'macos'
       run: |
         brew update
     
@@ -45,7 +45,7 @@ jobs:
 
     - name: Runs all stages
       run: |
-        export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+        export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
         export PSPDEV=$PWD/pspdev
         export PATH=$PATH:$PSPDEV/bin
         ./toolchain.sh
