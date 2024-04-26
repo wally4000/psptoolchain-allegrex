@@ -34,7 +34,7 @@ cd "$REPO_FOLDER"
 
 TARGET="psp"
 if [[ $(uname) == "Darwin" ]]; then
-TARG_XTRA_OPTS="--with-sysroot=$(shell xcrun --sdk macosx --show-sdk-path)"
+TARG_XTRA_OPTS="--with-sysroot=$(xcrun --sdk macosx --show-sdk-path)"
 else
 TARG_XTRA_OPTS=""
 fi
