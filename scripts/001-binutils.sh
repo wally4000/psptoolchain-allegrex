@@ -1,6 +1,11 @@
 #!/bin/bash
 # 001-binutils.sh by pspdev developers
 
+if [[ $(uname) == "Darwin" ]]; then
+export CPATH="$(brew --prefix)/include" # This may break Ubuntu
+export LIBRARY_PATH := $(brew --prefix)/lib #This may break Ubuntu
+fi
+
 ## Exit with code 1 when any command executed returns a non-zero exit code.
 onerr()
 {
@@ -31,6 +36,9 @@ else
 fi
 
 cd "$REPO_FOLDER"
+
+export CPATH="$(brew --prefix)/include" # This may break Ubuntu
+export LIBRARY_PATH="$(brew --prefix)/lib" #This may break Ubuntu
 
 TARGET="psp"
 TARG_XTRA_OPTS=""
