@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os[0] }}
     strategy:
       matrix:
-        os: [[macos-13, bash] [macos-latest, bash], [ubuntu-latest, bash], [windows-latest, msys2]]
+        os: [[macos-13, bash], [macos-latest, bash], [ubuntu-latest, bash], [windows-latest, msys2]]
       fail-fast: false
     defaults:
      run:
