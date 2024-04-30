@@ -4,12 +4,11 @@
 if [[ $(uname) == "Darwin" ]]; then
 export CPATH="$(brew --prefix)/include" # This may break Ubuntu
 export LIBRARY_PATH="$(brew --prefix)/lib" #This may break Ubuntu
-TARG_XTRA_OPTS="--with-native-system-header=$(brew --prefix)/include"
-    sdkroot = $(shell xcrun --sdk macosx --show-sdk-path)
-    macos_extra_args = -isysroot $(sdkroot)
-    CC += -Wno-nullability-completeness -Wno-missing-braces $(macos_extra_args)
-    CXX += -stdlib=libc++ -mmacosx-version-min=10.7 $(macos_extra_args)
+TARG_XTRA_OPTS="--with-native-system-header=$(brew --prefix)/include CC=gcc-13 CXX=g++-13"
+else
+TARG_XTRA_OPTS=""
 fi
+
 
 
 ## Exit with code 1 when any command executed returns a non-zero exit code.
@@ -45,6 +44,7 @@ cd "$REPO_FOLDER"
 
 TARGET="psp"
 
+
 ## Determine the maximum number of processes that Make can work with.
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
@@ -57,7 +57,6 @@ rm -rf mkdir build-$TARGET-stage1 && mkdir build-$TARGET-stage1 && cd build-$TAR
   --prefix="$PSPDEV" \
   --target="$TARGET" \
   --enable-languages="c" \
-  --with-float=hard \
   --with-headers=no \
   --without-newlib \
   --disable-libatomic \

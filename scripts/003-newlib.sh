@@ -1,8 +1,11 @@
 #!/bin/bash
 # 003-newlib.sh by pspdev developers
 if [[ $(uname) == "Darwin" ]]; then
-export CPATH="$(brew --prefix)/include" # This may break Ubuntu
-export LIBRARY_PATH="$(brew --prefix)/lib" #This may break Ubuntu
+export CPATH="$(brew --prefix)/include"
+export LIBRARY_PATH="$(brew --prefix)/lib" 
+TARG_XTRA_OPTS="CC=gcc-13 CXX=g++-13"
+else
+TARG_XTRA_OPTS=""
 fi
 
 ## Exit with code 1 when any command executed returns a non-zero exit code.
@@ -37,6 +40,7 @@ fi
 cd "$REPO_FOLDER"
 
 TARGET="psp"
+
 
 ## Determine the maximum number of processes that Make can work with.
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
