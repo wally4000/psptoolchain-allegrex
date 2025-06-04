@@ -73,7 +73,7 @@ jobs:
     container: ${{ matrix.os[0] }}:${{ matrix.os[2] }}
     strategy:
       matrix:
-        os: [[ubuntu, bash, latest], [fedora, bash, 41]]
+        os: [[ubuntu, bash, latest], [fedora, bash, latest]]
     steps:
     - name: Install dependencies Ubuntu
       if: matrix.os[0] == 'ubuntu'
@@ -86,7 +86,7 @@ jobs:
       if: matrix.os[0] == 'fedora'
       run: |
         dnf -y install gcc gcc-c++ make git gettext texinfo bison flex gmp-devel mpfr-devel libmpc-devel \
-          ncurses-devel diffutils glibc-gconv-extra which
+          ncurses-devel diffutils glibc-gconv-extra which gawk file
 
     - name: Checkout git repo
       uses: actions/checkout@v4
